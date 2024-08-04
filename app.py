@@ -198,8 +198,10 @@ if uploaded_file is not None:
         
         if st.button("Download Processed Shapes as CSV"):
             save_csv(processed_shapes, 'processed_shapes.csv')
-            st.download_button("Download CSV", data=open('processed_shapes.csv').read(), file_name='processed_shapes.csv', mime='text/csv')
+            with open('processed_shapes.csv', 'rb') as f:
+                st.download_button("Download CSV", f.read(), file_name='processed_shapes.csv', mime='text/csv')
 
         if st.button("Download Processed Shapes as SVG"):
             save_svg(processed_shapes, 'processed_shapes.svg')
-            st.download_button("Download SVG", data=open('processed_shapes.svg').read(), file_name='processed_shapes.svg', mime='image/svg+xml')
+            with open('processed_shapes.svg', 'rb') as f:
+                st.download_button("Download SVG", f.read(), file_name='processed_shapes.svg', mime='image/svg+xml')
